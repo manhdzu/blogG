@@ -22,7 +22,7 @@ export const createPost = (postData, history) => dispatch => {
             payload: res.data
          });
          dispatch(togglePostLoading());
-         history.push("/blog");
+         history.push(`/blog`);
       })
       .catch(err => {
          dispatch(setErrors(err.response.data));
@@ -33,7 +33,7 @@ export const createPost = (postData, history) => dispatch => {
 export const getPostByID = id => dispatch => {
    dispatch(togglePostLoading());
    axios
-      .get(`/api/posts/post/${id}`)
+      .get(`${process.env.REACT_APP_API_URL}/api/posts/post/${id}`)
       .then(res => {
          dispatch({
             type: GET_POST,
@@ -52,7 +52,7 @@ export const getPostByID = id => dispatch => {
 export const getPostsByAuthor = author => dispatch => {
    dispatch(togglePostsLoading());
    axios
-      .get(`/api/posts/author/${author}`)
+      .get(`${process.env.REACT_APP_API_URL}/api/posts/author/${author}`)
       .then(res => {
          dispatch({
             type: GET_POSTS,
@@ -86,7 +86,7 @@ export const getPosts = () => dispatch => {
 export const updatePost = (id, postData, history) => dispatch => {
    dispatch(togglePostLoading());
    axios
-      .patch(`/api/posts/update/${id}`, postData)
+      .patch(`${process.env.REACT_APP_API_URL}/api/posts/update/${id}`, postData)
       .then(res => {
          dispatch({
             type: UPDATE_POST,
@@ -104,7 +104,7 @@ export const updatePost = (id, postData, history) => dispatch => {
 export const deletePost = (id, history) => dispatch => {
    dispatch(togglePostLoading());
    axios
-      .delete(`/api/posts/delete/${id}`)
+      .delete(`${process.env.REACT_APP_API_URL}/api/posts/delete/${id}`)
       .then(res => {
          dispatch({
             type: DELETE_POST,
