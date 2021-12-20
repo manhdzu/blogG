@@ -32,7 +32,7 @@ const ViewPost = ({ post, onDelete, onEdit }) => {
             <Col>Created by : {post.author}</Col>
             <Col>Date: {postDate}</Col>
          </Row>
-         {post.author == user.user_name && (
+         {post.author === user.user_name && (
             <Row className="mt-4">
                <Col className="text-center">
                   <Button

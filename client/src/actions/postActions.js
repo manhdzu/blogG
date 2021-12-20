@@ -15,7 +15,7 @@ import { setErrors, clearErrors } from "./errorActions";
 export const createPost = (postData, history) => dispatch => {
    dispatch(togglePostLoading());
    axios
-      .post("/api/posts/create", postData)
+      .post(`${process.env.REACT_APP_API_URL}/api/posts/create`, postData)
       .then(res => {
          dispatch({
             type: CREATE_POST,
@@ -69,7 +69,7 @@ export const getPostsByAuthor = author => dispatch => {
 export const getPosts = () => dispatch => {
    dispatch(togglePostsLoading());
    axios
-      .get(`/api/posts/`)
+      .get(`${process.env.REACT_APP_API_URL}/api/posts/`)
       .then(res => {
          dispatch({
             type: GET_POSTS,
@@ -79,7 +79,6 @@ export const getPosts = () => dispatch => {
          dispatch(togglePostsLoading());
       })
       .catch(err => {
-         dispatch(setErrors(err.response.data));
          dispatch(togglePostsLoading());
       });
 };

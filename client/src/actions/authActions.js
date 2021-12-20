@@ -9,7 +9,7 @@ import { setErrors } from "./errorActions";
 export const registerUser = (userData, history) => dispatch => {
    dispatch(toggleUserLoading());
    axios
-      .post("/api/users/signup", userData)
+      .post(`${process.env.REACT_APP_API_URL}/api/users/signup`, userData)
       .then(res => {
          dispatch(toggleUserLoading());
          localStorage.setItem(
@@ -27,7 +27,7 @@ export const registerUser = (userData, history) => dispatch => {
 export const loginUser = userData => dispatch => {
    dispatch(toggleUserLoading());
    axios
-      .post("/api/users/login", userData)
+      .post(`${process.env.REACT_APP_API_URL}/api/users/login`, userData)
       .then(res => {
          dispatch(resetPost());
          const { token } = res.data;
@@ -38,7 +38,6 @@ export const loginUser = userData => dispatch => {
          dispatch(toggleUserLoading());
       })
       .catch(err => {
-         dispatch(setErrors(err.response.data));
          dispatch(toggleUserLoading());
       });
 };

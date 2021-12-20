@@ -5,12 +5,14 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
 const users = require("./routes/api/users");
+const cors = require("cors");
 
 const app = express();
 
 //middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 // db configuration
 const MONGO_URI = process.env.MONGO_URI;
