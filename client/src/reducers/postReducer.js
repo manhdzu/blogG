@@ -16,7 +16,7 @@ const initialState = {
    postsLoading: false
 };
 
-export default function(state = initialState, action) {
+export default function postFunc(state = initialState, action) {
    switch (action.type) {
       case CREATE_POST:
          return {
