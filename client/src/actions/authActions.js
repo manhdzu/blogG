@@ -38,6 +38,7 @@ export const loginUser = userData => dispatch => {
          dispatch(toggleUserLoading());
       })
       .catch(err => {
+         dispatch(setErrors(err.response.data));
          dispatch(toggleUserLoading());
       });
 };
