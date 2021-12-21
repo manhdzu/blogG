@@ -20,7 +20,7 @@ router.get(
 );
 
 router.get("/post/:id", (req, res) => {
-   Post.find({ _id: req.params.id })
+   Post.find({ _id: req.params.id }).sort({ date: 'desc'})
       .then(post => res.status(200).json(post))
       .catch(err => res.status(400).json({ id: "Error fetching post by id" }));
 });
@@ -36,10 +36,7 @@ router.get("/author/:author", (req, res) => {
       );
 });
 
-router.post(
-   "/create",
-   passport.authenticate("jwt", { session: false }),
-   (req, res) => {
+router.post("/create", passport.authenticate("jwt", { session: false }), (req, res) => {
       const author = req.user.user_name;
       const post = req.body;
       const { errors, isValid } = validatePostInput(post);
