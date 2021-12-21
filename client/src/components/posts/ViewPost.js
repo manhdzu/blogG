@@ -31,7 +31,7 @@ const ViewPost = ({ post, onDelete, onEdit }) => {
          <Row className="d-flex flex-column font-italic footerStyle">
             <Col>Created by : {post.author}</Col>
             <Col>Date: {postDate}</Col>
-            <Col>Date: {post.likeCount}</Col>
+            <Col>Like: {post.likeCount}</Col>
          </Row>
          {post.author === user.user_name && (
             <Row className="mt-4">
