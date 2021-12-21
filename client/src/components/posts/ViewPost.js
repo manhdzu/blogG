@@ -5,6 +5,8 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import "./post.scss";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { IconButton, Typography } from '@material-ui/core';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const ViewPost = ({ post, onDelete, onEdit }) => {
 
@@ -31,16 +33,21 @@ const ViewPost = ({ post, onDelete, onEdit }) => {
          <Row className="d-flex flex-column font-italic footerStyle">
             <Col>Created by : {post.author}</Col>
             <Col>Date: {postDate}</Col>
-            <Col>Like: {post.likeCount}</Col>
+         </Row>
+         <Row>
+            <Col>
+               <IconButton>
+                  <FavoriteIcon />
+                  <Typography component='span' color='textSecondary'>
+                     {post.likeCount}
+                  </Typography>
+               </IconButton>
+            </Col>
          </Row>
          {post.author === user.user_name && (
             <Row className="mt-4">
                <Col className="text-center">
-                  <Button
-                     className="mr-2"
-                     variant="outline-info"
-                     onClick={onEdit}
-                  >
+                  <Button className="mr-2" variant="outline-info" onClick={onEdit}>
                      Edit
                   </Button>
                   <Button variant="outline-danger" onClick={onDelete}>
