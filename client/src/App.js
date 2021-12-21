@@ -18,6 +18,8 @@ import PrivateRoute from "./utils/PrivateRoute";
 import ViewPostPage from "./containers/posts/ViewPostPage";
 import CreatePostPage from "./containers/posts/CreatePostPage";
 import UpdatePostPage from "./containers/posts/UpdatePostPage";
+import AboutPage from "./containers/AboutPage";
+import MorePage from "./containers/MorePage";
 
 if (localStorage.jwtToken) {
    const token = localStorage.jwtToken;
@@ -41,6 +43,8 @@ const App = () => {
                <Route path="/" exact component={Landing} />
                <Route path="/login" component={LoginPage} />
                <Route path="/signup" component={SignUpPage} />
+               <Route path="/about" component={AboutPage}/>
+               <Route path="/more" component={MorePage}/>
                <PrivateRoute exact path="/blog" component={BlogPage} />
                <PrivateRoute
                   exact
