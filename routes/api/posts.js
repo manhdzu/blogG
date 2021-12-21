@@ -20,7 +20,7 @@ router.get(
 );
 
 router.get("/post/:id", (req, res) => {
-   Post.find({ _id: req.params.id }).sort({ createdAt: 'desc'})
+   Post.find({ _id: req.params.id }).sort({ date: -1})
       .then(post => res.status(200).json(post))
       .catch(err => res.status(400).json({ id: "Error fetching post by id" }));
 });
