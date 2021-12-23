@@ -14,7 +14,7 @@ const More = () => {
                     </Button>
                 </Col>
 		    </Row>
-            <Row className='mt-4'><Link to="/about"><h6>{"< Less information"}</h6></Link></Row>
+            <Row className='mt-4'><Link to="/about"><h6>{"< About BlogG"}</h6></Link></Row>
         </Container>
 		
 	)
